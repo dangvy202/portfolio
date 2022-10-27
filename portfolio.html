@@ -4,58 +4,1715 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>portfolio</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicon -->
+    <link id='favicon' rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-png">
+    <title>Portfolio</title>
 </head>
 <style>
-#menu ul li{
-    display: inline-block;
-    margin-right: 20px;
-    float: right;
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  transition: all 0.2s linear;
 }
-#menu ul li a {
-    color: black;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    text-decoration: none;
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
-#menu ul li a:hover {
-    color: red;
+body {
+  background: #f7f7f7;
+  font-family: "Poppins", sans-serif;
 }
+
+*::selection {
+  background: #2b3dda;
+  color: #fff;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+html::-webkit-scrollbar {
+  width: 0.8rem;
+}
+html::-webkit-scrollbar-track {
+  background: rgb(235, 202, 245);
+}
+html::-webkit-scrollbar-thumb {
+  background: #420177;
+}
+
+/* pre loader start */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  background: #e6eff1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.loader-container.fade-out {
+  top: -120%;
+}
+/* pre loader end */
+
+/* navbar starts */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.7rem 10%;
+  height: 6.5rem;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(146, 161, 176, 0.3);
+}
+section {
+  min-height: 100vh;
+  padding: 2rem 9%;
+}
+.heading {
+  font-size: 3.5rem;
+  color: rgb(32, 32, 32);
+  font-weight: 800;
+  text-align: center;
+}
+.heading span {
+  color: rgb(115, 3, 167);
+}
+header .logo {
+  font-size: 1.9rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: #0e2431;
+}
+header .logo i {
+  font-size: 2.2rem;
+}
+header .logo:hover {
+  color: #fc8c05;
+}
+header .navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .navbar li {
+  margin-left: 2.5rem;
+}
+header .navbar ul li a {
+  font-size: 1.57rem;
+  color: #0e2431;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.04rem;
+  transition: 0.2s;
+}
+header .navbar ul li a.active,
+header .navbar ul li a:hover {
+  color: #011aff;
+  border-bottom: 0.2rem solid #011aff;
+  padding: 0.5rem 0;
+}
+/* navbar ends */
+
+/* hamburger icon starts*/
+#menu {
+  font-size: 3rem;
+  cursor: pointer;
+  color: rgb(24, 2, 63);
+  display: none;
+}
+@media (max-width: 768px) {
+  #menu {
+    display: block;
+  }
+  header .navbar {
+    position: fixed;
+    top: 6.5rem;
+    right: -120%;
+    width: 75%;
+    height: 100%;
+    text-align: left;
+    align-items: flex-start;
+    background-color: #0e0f31;
+  }
+  header .navbar ul {
+    flex-flow: column;
+    padding: 1rem;
+  }
+  header .navbar ul li {
+    text-align: center;
+    width: 100%;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    width: 26rem;
+  }
+  header .navbar ul li a {
+    display: block;
+    padding: 1rem;
+    text-align: left;
+    color: #fff;
+    font-size: 2rem;
+  }
+  header .navbar ul li a.active,
+  header .navbar ul li a:hover {
+    padding: 1rem;
+    color: #fff;
+    border-radius: 0.5rem;
+    border-bottom: 0.5rem solid #011aff;
+  }
+  .fa-times {
+    transform: rotate(180deg);
+  }
+  header .navbar.nav-toggle {
+    right: 0;
+  }
+}
+/* hamburger icon ends */
+
+/* hero section starts*/
+.home {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  min-height: 100vh;
+  align-items: center;
+}
+.home #particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.home .content {
+  flex: 1 1 40rem;
+  padding-top: 1rem;
+  z-index: 1;
+}
+.home .image {
+  flex: 1 1 40rem;
+  z-index: 1;
+}
+.home .image img {
+  width: 70%;
+  margin-left: 6rem;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.home .image img:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.home .content h2 {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #002057;
+}
+.home .content h2 span {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #ff7b00;
+}
+.home .content p {
+  font-size: 2.5rem;
+  color: #000;
+  font-weight: 600;
+  padding: 1rem 0;
+}
+.home .content p span {
+  font-size: 2.5rem;
+  color: rgb(148, 8, 8);
+  font-weight: 600;
+  padding: 1rem 0;
+}
+.home .btn {
+  margin-top: 1rem;
+  position: absolute;
+  line-height: 0;
+  padding: 1.6rem 3rem;
+  border-radius: 4em;
+  transition: 0.5s;
+  color: #fff;
+  background: #2506ad;
+  box-shadow: 0px 5px 18px rgba(48, 68, 247, 0.6);
+  font-family: "Nunito", sans-serif;
+}
+.home .btn span {
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: 0.1rem;
+}
+.home .btn i {
+  margin-left: 0.3rem;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+.home .btn:hover {
+  background: #1a047e;
+}
+.home .btn:hover i {
+  transform: translateX(5px);
+}
+/* social icons start */
+.socials {
+  position: relative;
+  margin-top: 9rem;
+}
+.socials .social-icons {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.socials .social-icons li {
+  display: inline-block;
+  margin-bottom: 14px;
+}
+.social-icons a {
+  font-size: 2rem;
+  display: inline-block;
+  line-height: 44px;
+  color: #00d9ff;
+  background-color: #09011b;
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  margin-right: 8px;
+  border-radius: 100%;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.social-icons a:active,
+.social-icons a:focus,
+.social-icons a:hover {
+  color: #fff;
+  background-color: #0685da;
+}
+.social-icons a.github:hover {
+  background-color: #0e0e0e;
+}
+.social-icons a.twitter:hover {
+  background-color: #00aced;
+}
+.social-icons a.facebook:hover {
+  background-color: #05076e;
+}
+.social-icons a.linkedin:hover {
+  background-color: #007bb6;
+}
+.social-icons a.dev:hover {
+  background-color: #070707;
+}
+.social-icons a.instagram:hover {
+  background-color: #ee00da;
+}
+/* social icons end */
+
+/* hero media queries starts*/
+@media (max-width: 450px) {
+  .home .btn {
+    margin: 4rem 0;
+  }
+  .socials {
+    margin-top: 12rem;
+  }
+  .home .image img {
+    margin-top: -12rem;
+  }
+  .home .content p {
+    font-size: 2.2rem;
+  }
+  .home .content p span {
+    font-size: 2.2rem;
+  }
+}
+/* hero media queries ends*/
+/* hero section end */
+
+/* about section starts */
+.about {
+  background: rgb(255, 255, 255);
+}
+.about .row {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 4rem;
+}
+.about .row .image {
+  text-align: center;
+  flex: 1 1 35rem;
+}
+.about .row .image img {
+  margin: 4rem;
+  width: 30rem;
+  height: auto;
+  border-radius: 5%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+  mix-blend-mode: luminosity;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.about .row .image img:hover {
+  mix-blend-mode: normal;
+}
+.about .row .content {
+  flex: 1 1 45rem;
+  padding: 3rem;
+}
+.about .row .content h3 {
+  color: rgb(27, 27, 27);
+  font-size: 2.5rem;
+}
+.about .row .content .tag {
+  font-size: 1.4rem;
+  color: #020133;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+.about .row .content p {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  font-family: "Nunito";
+  font-weight: 600;
+  text-transform: none;
+}
+.about .row .content .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-family: "Nunito";
+  font-weight: 600;
+}
+.about .row .content .box-container .box p {
+  text-transform: none;
+}
+.about .row .content .box-container .box p span {
+  color: #011aff;
+}
+.resumebtn {
+  margin-top: 6rem;
+}
+.resumebtn .btn {
+  padding: 1.7rem 3rem;
+  border-radius: 0.5em;
+  transition: 0.3s;
+  color: #fff;
+  background: #2506ad;
+  box-shadow: 0px 5px 10px rgba(48, 68, 247, 0.6);
+  font-family: "Nunito", sans-serif;
+}
+.resumebtn .btn span {
+  font-weight: 600;
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+}
+.resumebtn .btn i {
+  margin-left: 0.3rem;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+.resumebtn .btn:hover {
+  background: #1a047e;
+}
+.resumebtn .btn:hover i {
+  transform: translateX(5px);
+}
+/* about media queries starts*/
+@media screen and (max-width: 600px) {
+  .about .row .image {
+    margin-top: 2rem;
+  }
+  .about .row .image img {
+    margin: 0 auto;
+    width: 80%;
+    mix-blend-mode: normal;
+  }
+  .about .row {
+    padding: 0.5rem;
+    margin-bottom: 7rem;
+  }
+  .about .row .content {
+    padding: 1rem;
+  }
+  .about .row .content .box-container {
+    gap: 0;
+  }
+}
+/* about media queries ends*/
+/* about section ends */
+
+/* skills section starts */
+.skills {
+  min-height: 90vh;
+  background: linear-gradient(to bottom, #57059e, #4a00e0);
+}
+.skills h2 {
+  color: #fff;
+}
+.skills .heading span {
+  color: rgb(255, 230, 0);
+}
+.skills .container {
+  background: rgba(0, 0, 22, 0.4);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+}
+.skills .container .row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  flex-wrap: wrap;
+  gap: 1.8rem;
+}
+.skills .container .bar {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 22, 0.9);
+  transition: 0.2s;
+}
+.skills .container .bar:hover {
+  box-shadow: 0 8px 10px rgba(0, 2, 68, 0.8) !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
+}
+.skills .container .bar .info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.skills .container .bar .info i {
+  font-size: 4rem;
+}
+.skills .container .bar .info span {
+  font-size: 2rem;
+  font-weight: 500;
+  font-family: "Poppins";
+  margin-left: 0.5rem;
+}
+/* skills media queries starts*/
+@media screen and (max-width: 600px) {
+  .skills .container {
+    padding: 0;
+    margin: 0;
+  }
+  .skills .container .row {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 1rem;
+    padding: 2rem 0.2rem 2rem 0.2rem;
+    gap: 1rem;
+  }
+  .skills .container {
+    margin-top: 5px;
+    width: 100%;
+  }
+}
+/* skills media queries ends*/
+/* skills section ends */
+
+/* education section starts */
+.education {
+  background: #e5ecfb;
+  min-height: 80vh;
+}
+.education .qoute {
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+.education .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.education .box-container .box {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  border-radius: 0.5rem;
+  box-shadow: 0.2rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  margin-top: 2rem;
+  overflow: hidden;
+  transition: 0.3s;
+  background: rgb(252, 252, 252);
+}
+.education .box-container .box:hover {
+  transform: scale(1.03);
+  box-shadow: 1rem 0.5rem 1.2rem rgba(0, 0, 0, 0.3);
+}
+.education .box-container .box .image {
+  flex: 1 1 20rem;
+  width: 100%;
+}
+.education .box-container .box img {
+  object-fit: cover;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.education .box-container .box .content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  flex-wrap: wrap;
+  flex: 1 1 70rem;
+}
+.education .box-container .box .content h3 {
+  font-size: 2.5rem;
+  color: #012970;
+  padding: 0.5rem 0;
+  font-weight: 600;
+  text-align: left;
+  margin-left: 1rem;
+}
+.education .box-container .box .content p {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  text-align: left;
+}
+.education h4 {
+  font-size: 2rem;
+  color: rgb(34, 109, 0);
+  text-align: left;
+  margin: 1rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+
+/* education media queries starts*/
+@media screen and (max-width: 600px) {
+  .education .box-container .box {
+    flex-direction: column;
+    width: 100%;
+  }
+  .education .box-container .box .image {
+    width: 100%;
+    height: 25rem;
+  }
+  .education .box-container .box img {
+    width: 100%;
+  }
+  .education .box-container .box .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    flex-wrap: wrap;
+    flex: 0;
+  }
+  .education .btns {
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex-wrap: wrap;
+  }
+}
+/* education media queries ends*/
+/* education section ends */
+
+/* work section starts */
+.work {
+  /* background: #010124; */
+  background: linear-gradient(to bottom, #000031, #00002c);
+}
+.work h2 {
+  color: #fff;
+  padding: 1rem;
+}
+.work .heading span {
+  color: rgb(255, 230, 0);
+}
+.work .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2rem;
+}
+.work .box-container .box {
+  flex: 1 1 30rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  height: 30rem;
+}
+.work .box-container .box img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.work .box-container .box .content {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 85%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+}
+.work .box-container .box .content .tag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.5rem;
+  width: 100%;
+  padding-left: 1rem;
+  background: #ffd900;
+}
+.work .box-container .box .content .tag h3 {
+  font-size: 2rem;
+}
+.work .box-container .box:hover .content {
+  top: 25%;
+}
+.work .desc {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.work .desc p {
+  font-size: 1.5rem;
+}
+.work .desc .btns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2rem;
+}
+.work .desc .btns .btn {
+  line-height: 0;
+  display: inline;
+  padding: 1.5rem 2.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  color: #fff;
+  background: rgb(12, 12, 12);
+  margin-right: 2rem;
+}
+.work .desc .btns .btn:hover {
+  background: #310ae0f5;
+}
+.work .viewall {
+  display: flex;
+  justify-content: center;
+}
+.work .viewall .btn {
+  position: relative;
+  line-height: 0;
+  padding: 1.6rem 3rem;
+  border-radius: 0.5em;
+  transition: 0.5s;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  border: 2px solid #fff;
+  box-shadow: 0px 5px 10px rgba(65, 84, 241, 0.4);
+  text-align: center;
+}
+.work .viewall .btn span {
+  font-weight: 600;
+  font-size: 1.7rem;
+  font-family: "Nunito", sans-serif;
+}
+.work .viewall .btn i {
+  margin-left: 0.3rem;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+.work .viewall .btn:hover {
+  background: #fff;
+  color: #000;
+}
+.work .viewall .btn:hover i {
+  transform: translateX(5px);
+}
+/* work section ends */
+
+/* experience section starts */
+.experience .timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.experience .timeline::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  background: #020133;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+  z-index: -2;
+}
+.experience .container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+/*circles on timeline*/
+.experience .container::after {
+  content: "\f0b1";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: rgb(255, 255, 255);
+  border: 4px solid #ff9f55;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 100;
+  font-size: 1.89rem;
+  text-align: center;
+  font-weight: 600;
+  color: #02094b;
+  font-family: "Font Awesome\ 5 Free";
+}
+.experience .left {
+  left: 0;
+}
+.experience .right {
+  left: 50%;
+}
+/* arrows pointing right */
+.experience .left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid #f68c09;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #f68c09;
+}
+/* arrows pointing left  */
+.experience .right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid #f68c09;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #f68c09 transparent transparent;
+}
+.experience .right::after {
+  left: -16px;
+}
+.experience .content {
+  background-color: #f68c09;
+  position: relative;
+  border-radius: 6px;
+}
+.experience .content .tag {
+  font-size: 1.3rem;
+  padding-top: 1.5rem;
+  padding-left: 1.5rem;
+}
+.experience .content .desc {
+  margin-left: 1.5rem;
+  padding-bottom: 1rem;
+}
+.experience .content .desc h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.experience .content .desc p {
+  font-size: 1.2rem;
+}
+/* view all button */
+.morebtn {
+  display: flex;
+  justify-content: center;
+}
+.morebtn .btn {
+  position: relative;
+  line-height: 0;
+  padding: 1.6rem 3rem;
+  border-radius: 0.5em;
+  transition: 0.5s;
+  color: #fff;
+  background: #2506ad;
+  box-shadow: 0px 5px 10px rgba(48, 68, 247, 0.6);
+  text-align: center;
+}
+.morebtn .btn span {
+  font-weight: 600;
+  font-size: 1.7rem;
+  font-family: "Nunito", sans-serif;
+}
+.morebtn .btn i {
+  margin-left: 0.3rem;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+.morebtn .btn:hover {
+  background: #1a047e;
+}
+.morebtn .btn:hover i {
+  transform: translateX(5px);
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  .experience {
+    min-height: 80vh;
+  }
+  .experience .timeline {
+    margin-top: 2rem;
+  }
+  .experience .timeline::after {
+    left: 31px;
+  }
+  .experience .container {
+    width: 100%;
+    padding-left: 8rem;
+    padding-right: 2rem;
+  }
+  .experience .container::after {
+    font-size: 2.2rem;
+  }
+  .experience .container::before {
+    left: 61px;
+    border: medium solid #f68c09;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #f68c09 transparent transparent;
+  }
+  .experience .left::after {
+    left: 15px;
+  }
+  .experience .right::after {
+    left: 15px;
+  }
+  .experience .right {
+    left: 0%;
+  }
+  .morebtn {
+    margin-top: 3rem;
+  }
+}
+/* experience media queries ends */
+/* experience section ends */
+
+/* contact section starts */
+.contact {
+  background: #e5ecfb;
+  min-height: 60vh;
+}
+.contact .container {
+  max-width: 1050px;
+  width: 100%;
+  background: #fff;
+  border-radius: 1.5rem;
+  margin: 2rem 5rem;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+.contact .container .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.5rem 2rem;
+}
+.contact .content .image-box {
+  max-width: 60%;
+  margin-left: 4rem;
+}
+.contact .content .image-box img {
+  width: 100%;
+  height: 40rem;
+  position: relative;
+}
+.contact .content form {
+  width: 45%;
+  margin-right: 3.5rem;
+}
+form .form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form-group .field {
+  height: 50px;
+  display: flex;
+  position: relative;
+  margin: 1rem;
+  width: 100%;
+}
+form i {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  color: rgb(51, 51, 51);
+  font-size: 17px;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+form .field input,
+form .message textarea {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  padding: 0 16px 0 48px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  border-radius: 5px;
+  border: 1px solid rgb(51, 51, 51);
+  background: #e5ecfb;
+}
+.field input::placeholder,
+.message textarea::placeholder {
+  color: rgb(51, 51, 51);
+}
+.field input:focus,
+.message textarea:focus {
+  padding-left: 47px;
+  border: 2px solid rgb(115, 3, 167);
+}
+.field input:focus ~ i,
+.message textarea:focus ~ i {
+  color: rgb(115, 3, 167);
+}
+form .message {
+  position: relative;
+  margin: 1rem;
+  width: 100%;
+}
+form .message i {
+  top: 25px;
+  font-size: 20px;
+  left: 15px;
+}
+form .message textarea {
+  min-height: 130px;
+  max-height: 230px;
+  max-width: 100%;
+  min-width: 100%;
+  padding: 12px 20px 0 48px;
+}
+form .message textarea::-webkit-scrollbar {
+  width: 0px;
+}
+form .button-area {
+  display: flex;
+  float: right;
+  flex-direction: row-reverse;
+}
+.button-area button {
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 13px 25px;
+  background: #2506ad;
+  box-shadow: 0px 5px 10px rgba(48, 68, 247, 0.6);
+  transition: 0.3s ease;
+  font-family: "Nunito", sans-serif;
+}
+.button-area button:hover {
+  background: #421cecf5;
+}
+.button-area span {
+  font-size: 17px;
+  padding: 1rem;
+  display: none;
+}
+.button-area button i {
+  position: relative;
+  top: 6px;
+  left: 2px;
+  font-size: 1.5rem;
+  transition: 0.3s;
+  color: #fff;
+}
+.button-area button:hover i {
+  left: 8px;
+}
+/* contact section media queries starts */
+@media (max-width: 900px) {
+  .contact {
+    min-height: 70vh;
+  }
+  .contact .container {
+    margin: 3rem 0 2rem 0;
+  }
+  .contact .container .content {
+    padding: 18px 12px;
+  }
+  .contact .content .image-box {
+    display: none;
+  }
+  .contact .content form {
+    width: 100%;
+    margin-right: 2rem;
+  }
+}
+/* contact section media queries ends */
+/* contact section ends */
+
+/* footer section starts */
+.footer {
+  min-height: auto;
+  padding-top: 0;
+  background: rgb(0, 1, 43);
+}
+.footer .box-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.footer .box-container .box {
+  flex: 1 1 25rem;
+  margin: 2.5rem;
+}
+.footer .box-container .box h3 {
+  font-size: 2.5rem;
+  color: #fff;
+  padding-bottom: 1rem;
+  font-weight: normal;
+}
+.footer .box-container .box p {
+  font-size: 1.5rem;
+  color: #ccc;
+  padding: 0.7rem 0;
+  text-transform: none;
+}
+.footer .box-container .box p i {
+  padding-right: 1rem;
+  color: #ffae00;
+}
+.footer .box-container .box a {
+  font-size: 1.5rem;
+  color: rgb(238, 238, 238);
+  padding: 0.3rem 0;
+  display: block;
+}
+.footer .box-container .box a:hover {
+  color: #ffae00;
+}
+.footer .box-container .box .share {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+.footer .box-container .box .share a {
+  height: 4rem;
+  width: 4rem;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 5rem;
+  font-size: 1.7rem;
+  margin-right: 1rem;
+  transition: 0.2s;
+  background: rgb(230, 230, 230);
+  color: #02094b;
+  border: none;
+}
+.footer .box-container .box .share a:hover {
+  background: transparent;
+  transform: scale(0.98);
+  border: 0.1rem solid rgb(180, 178, 178);
+  color: #ffae00;
+}
+.footer .credit {
+  padding: 1rem 0 0 0;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  color: #fff;
+  border-top: 0.1rem solid #fff3;
+}
+.footer .credit a {
+  color: #ffae00;
+}
+.footer .fa {
+  color: #e90606;
+  margin: 0 0.3rem;
+  font-size: 1.5rem;
+  animation: pound 0.35s infinite alternate;
+}
+@-webkit-keyframes pound {
+  to {
+    transform: scale(1.1);
+  }
+}
+@keyframes pound {
+  to {
+    transform: scale(1.1);
+  }
+}
+@media (max-width: 450px) {
+  .footer .box-container .box {
+    margin: 1.5rem;
+  }
+  .footer .box-container .box p {
+    padding: 0.7rem;
+  }
+  .footer .box-container .box .share a {
+    padding: 1.2rem;
+  }
+}
+/* footer section ends */
+
+/* common media queries starts*/
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+  body {
+    padding-right: 0;
+  }
+  section {
+    padding: 2rem;
+  }
+}
+/* common media queries ends*/
+
+/* scroll top starts */
+#scroll-top {
+  position: fixed;
+  top: -140%;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  font-size: 2rem;
+  background: #ffae00;
+  color: rgb(13, 0, 44);
+  border-radius: 50%;
+  transition: 1s linear;
+  z-index: 1000;
+}
+#scroll-top.active {
+  top: calc(100% - 12rem);
+}
+/* scroll top ends */
 </style>
-<body>
-    <header>
-        <div class="logo" id="logo">
-            <!-- <img src="file:///C:/Users/Admin/Pictures/Camera%20Roll/2-34.jpg" alt="" width="100px" height="200px"> -->
-        </div>
-        <nav class="menu" id="menu">
+<body oncontextmenu="return false">
+
+<!-- pre loader -->
+<!-- <div class="loader-container">
+  <img draggable="false" src="./assets/images/preloader.gif" alt="">
+</div> -->
+
+<!-- navbar starts -->
+<header>
+        <a href="/" class="logo"><i class="fab fa-node-js"></i> Tran Dang Vy</a>
+
+        <div id="menu" class="fas fa-bars"></div>
+        <nav class="navbar">
             <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Skill</a></li>
-                    <li><a href="">Education</a></li>
-                    <li><a href="">Work</a></li>
-                    <li><a href="">Experience</a></li>
-                    <li><a href="">Contact</a></li>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-    </header>
-    <section>
-        <div class="info-banner" id="info-banner">
-            <div class="intro" id="intro">
-                <h2>Hi There , I'm ....</h2>
-                <p>I'm Software Development</p>
-                <button href="" style="background-color: red; width: 100px; height: 40px;color: white; border-radius: 35%;">About Me</button>
-                <ul>
-                    <li><a href=""><img src="" alt="">In</a></li>
-                    <li><a href=""><img src="" alt="">Git</a></li>
-                    <li><a href=""><img src="" alt="">twiter</a></li>
-                    <li><a href=""><img src="" alt="">Face</a></li>
-                </ul>
+</header>
+<!-- navbar ends -->
+
+
+<!-- hero section starts -->
+<section class="home" id="home">
+    <div id="particles-js"></div>
+
+    <div class="content">
+    <h2>Hi There,<br/> I'm <span>Vy</span></h2>
+    <p>i am into <span class="typing-text">Software Development</span></p>
+    <a href="#about" class="btn"><span>About Me</span>
+      <i class="fas fa-arrow-circle-down"></i>
+    </a>
+    <div class="socials">
+        <ul class="social-icons">
+          <li><a class="linkedin" aria-label="LinkedIn" href="https://www.linkedin.com/in/%C4%91%C4%83ng-v%E1%BB%B9-tr%E1%BA%A7n-69103a215/" target="_blank"><i class="fab fa-linkedin"></i></a></li> 
+          <li><a class="github" aria-label="GitHub" href="https://github.com/dangvy202" target="_blank"><i class="fab fa-github"></i></a></li>
+          <li><a class="facebook" aria-label="Facebook" href="https://www.facebook.com/profile.php?id=100006122314597" target="_blank"><i class="fab fa-facebook"></i></a></li>
+        </ul>
+      </div>
+    </div>
+<div class="image">
+    <img draggable="false" class="tilt" src="./assets/images/hero.png" alt="">
+</div>
+</section>
+<!-- hero section ends -->
+
+
+<!-- about section starts -->
+<section class="about" id="about">
+    <h2 class="heading"><i class="fas fa-user-alt"></i> About <span>Me</span></h2>
+    
+    <div class="row">
+
+    <div class="image">
+        <img draggable="false" class="tilt" src="./img/me.jpg" alt="">
+    </div>
+    <div class="content">
+        <h3>I'm Tran Dang Vy</h3>
+        <span class="tag">Full Stack Developer</span>
+        
+        <p>I am a Full-Stack developer. 
+          I am an Information Technology undergraduate from FPT UNIVERSITY.
+          I am very passionate about improving my coding skills & developing applications & websites.
+          Working for myself to improve my skills.
+          Love to build Full-Stack. </p>
+        
+        <div class="box-container">
+            <div class="box">
+              <p><span> age: </span> 23</p>
+              <p><span> phone : </span> +84 708-517-856</p>
             </div>
-            <div class="img" id="img">
-                <img src="file:///C:/Users/Admin/Pictures/Camera%20Roll/2-34.jpg" alt="" width="300px" height="200px">
+            <div class="box">
+              <p><span> email : </span> dangvy202@gmail.com</p>
+              <p><span> place : </span> VietNam - 700000</p>
             </div>
         </div>
-    </section>
+        
+        <div class="resumebtn">
+            <a href="#" class="btn"><span>Resume</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
+    </div>
+    </div>
+</section>
+<!-- about section ends -->
+
+<!-- skills section starts -->
+<section class="skills" id="skills">
+
+    <h2 class="heading"><i class="fas fa-laptop-code"></i> Skills & <span>Abilities</span></h2>
+
+    <div class="container">
+          <div class="row" id="skillsContainer">
+            <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/officel/40/000000/php-logo.png"/>
+                <span>PHP</span>
+              </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                  <img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo--v1.png"/>
+                  <span>Java</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/color/48/000000/javascript--v1.png"/>
+                    <span>javascript</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/color/48/000000/html-5--v1.png"/>
+                    <span>HTML</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/fluency/48/000000/css3.png"/>
+                    <span>CSS</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/color/48/000000/mysql--v1.png"/>
+                    <span>MYSQL</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/color/48/000000/oracle-logo.png"/>
+                    <span>ORACLE</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/color/48/000000/spring-logo.png"/>
+                    <span>SPRING</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/color/48/000000/kotlin.png"/>
+                    <span>KOTLIN</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/fluency/48/000000/flutter.png"/>
+                    <span>FLUTTER</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/fluency/48/000000/laravel.png"/>
+                    <span>LARAVEL</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/color/48/000000/magento.png"/>
+                    <span>MAGENTO</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/color/48/000000/wordpress.png"/>
+                    <span>WORDPRESS</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/color/48/000000/joomla.png"/>
+                    <span>JOOMLA</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/48/000000/external-vuejs-an-open-source-javascript-framework-for-building-user-interfaces-and-single-page-applications-logo-shadow-tal-revivo.png"/>
+                    <span>VUEJS</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/color/48/000000/react-native.png"/>
+                    <span>REACTJS</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/color/48/000000/react-native.png"/>
+                    <span>REACTNATIVE</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="https://img.icons8.com/fluency/48/000000/node-js.png"/>
+                    <span>NODEJS</span>
+                </div>
+            </div>
+      </div>
+</div>
+</section>
+<!-- skills section ends -->
+
+
+<!-- education section starts -->
+<section class="education" id="education">
+
+  <h1 class="heading"><i class="fas fa-graduation-cap"></i> My <span>Education</span></h1>
+
+    <p class="qoute">Education is not the learning of facts, but the training of the mind to think.</p>
+
+    <div class="box-container">
+
+    <div class="box">
+        <div class="image">
+            <img draggable="false" src="https://fpt.edu.vn/Content/images/assets/2021-FPTU-Eng.png" alt="">
+        </div>
+        <div class="content">
+            <h3>Bachelor of Engineering in Information Technology</h3>
+            <p>FPT University | FPT</p>
+            <h4>2017-2021 | Completed</h4>
+        </div>
+    </div>
+    <div class="box">
+        <div class="image">
+            <img draggable="false" src="https://i.ytimg.com/an/qoZpJjc2amo/c703a4b3-8505-4fda-85ae-06b52a4bcb12_mq.jpg?v=58aa5d10" alt="">
+        </div>
+        <div class="content">
+            <h3>Student of ZendVN center</h3>
+            <p>College | college</p>
+            <h4>2021-2021 | Completed</h4>
+        </div>
+    </div>
+    <div class="box">
+        <div class="image">
+            <img draggable="false" src="data:image/png;base64,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" alt="">
+        </div>
+        <div class="content">
+            <h3>Student of Korea IT School center</h3>
+            <p>College | college</p>
+            <h4>2021-2021 | Completed</h4>
+        </div>
+    </div>
+</div>
+</section>
+<!-- education section ends -->
+
+
+<!-- work project section starts -->
+<section class="work" id="work">
+
+  <h2 class="heading"><i class="fas fa-laptop-code"></i> Projects <span>Made</span></h2>
+
+  <div class="box-container">
+
+    <div class="content2">
+        <div class="tag">
+            <h2 style="color: white;">Some Businesses Have Cooperated</h2>
+        </div>
+        <div class="desc" style="padding-top: -100px;">
+            <div class="btns">
+                <a href="https://www.novaland.com.vn/"><img style="width: 200px;height: 100px;" src="https://vnrep.com/wp-content/uploads/2019/10/novaland-logo.jpg" alt=""></a>
+                <a href="https://www.roojai.com/"><img style="width: 200px;height: 100px" src="data:image/png;base64,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" alt=""></a>
+                <a href="https://danhkhoi.com.vn/"><img style="width: 200px;height: 100px" src="https://danhkhoigroup.com.vn/wp-content/uploads/2020/05/logo-danhkhoigroup-1.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="box tilt">
+      <div class="content">
+        <div class="tag">
+        <h3>Portfolio Website</h3>
+        </div>
+        <div class="desc">
+          <p>Personal portfolio website. Don't need much info about it, just scroll down. Some project cannot public!</p>
+          <div class="btns">
+            <a href="#" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
+            <a href="https://github.com/dangvy202" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+<div class="viewall">
+  <a href="/projects" class="btn"><span>View All</span>
+    <i class="fas fa-arrow-right"></i>
+</a>
+</div>
+
+</section>
+<!-- work project section ends -->
+
+<!-- experience section starts -->
+<section class="experience" id="experience">
+
+  <h2 class="heading"><i class="fas fa-briefcase"></i> Experience </h2>
+
+  <div class="timeline">
+
+    <div class="container right">
+      <div class="content">
+        <div class="tag">
+          <h2>Self Employed</h2>
+        </div>
+        <div class="desc">
+            <h3>Full Stack Developer</h3>
+            <p>10/2021 - present</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container left">
+      <div class="content">
+        <div class="tag">
+          <h2>Shinhan Banking</h2>
+        </div>
+        <div class="desc">
+            <h3>Web/App Developer | Junior</h3>
+            <p>01/2021 - 12/2021</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container right">
+        <div class="content">
+          <div class="tag">
+            <h2>Shinhan Finance</h2>
+          </div>
+          <div class="desc">
+              <h3>Financial Technology | Junior</h3>
+              <p>01/2021 - 12/2021</p>
+          </div>
+        </div>
+      </div>
+    
+
+    <div class="container left">
+      <div class="content">
+        <div class="tag">
+          <h2>CMC Global</h2>
+        </div>
+        <div class="desc">
+            <h3>Web/App Developer | Senior</h3>
+            <p>01/ 2022 - present</p>
+        </div>
+      </div>
+    </div>
+
+   
+
+    
+
+  <div class="morebtn">
+    <a href="/experience" class="btn"><span>View All</span>
+      <i class="fas fa-arrow-right"></i>
+  </a>
+  </div>
+
+</div>
+
+</section>
+<!-- experience section ends -->
+
+<!-- contact section starts -->
+<section class="contact" id="contact">
+  
+  <h2 class="heading"><i class="fas fa-headset"></i> Contact <span>Me</span></h2>
+
+  <div class="container">
+    <div class="content">
+      <div class="image-box">
+        <img draggable="false" src="./img/me.jpg" alt="">
+      </div>
+        <div class="form-group">
+            <div class="field">
+            <h3 type="text">Name: <span style="margin-left: 20px;">Tran Dang Vy</span></h3>
+            </div>
+            <div class="field">
+                <h3 type="text">Email: <span style="margin-left: 20px;">dangvy202@gmail.com</span></h3>
+            </div>
+            <div class="field">
+                <h3 type="text">Phone: <a href="tel:0708 517 856" style="margin-left: 20px;">0708 517 856</span></h3>
+            </div>
+        </div>
+  </div>
+  </div>
+</section>
+<!-- contact section ends -->
+
+
+<!-- footer section starts -->
+<section class="footer">
+
+  <div class="box-container">
+
+      <div class="box">
+          <h3>Portfolio</h3>
+          <p>Thank you for visiting my personal portfolio website. Connect with me over socials. <br/> <br/> Keep Rising 🚀. Connect with me over live chat!</p>
+      </div>
+
+      <div class="box">
+          <h3>quick links</h3>
+          <a href="#home"><i class="fas fa-chevron-circle-right"></i> home</a>
+          <a href="#about"><i class="fas fa-chevron-circle-right"></i> about</a>
+          <a href="#skills"><i class="fas fa-chevron-circle-right"></i> skills</a>
+          <a href="#education"><i class="fas fa-chevron-circle-right"></i> education</a>
+          <a href="#work"><i class="fas fa-chevron-circle-right"></i> work</a>
+          <a href="#experience"><i class="fas fa-chevron-circle-right"></i> experience</a>
+      </div>
+
+      <div class="box">
+          <h3>contact info</h3>
+          <p> <i class="fas fa-phone"></i>+84 708-517-856</p>
+          <p> <i class="fas fa-envelope"></i>dangvy202@gmail.com</p>
+          <p> <i class="fas fa-map-marked-alt"></i>VietNam, VN-700000</p>
+          <div class="share">
+
+              <a href="https://www.linkedin.com/in/%C4%91%C4%83ng-v%E1%BB%B9-tr%E1%BA%A7n-69103a215/" class="fab fa-linkedin" aria-label="LinkedIn" target="_blank"></a>
+              <a href="https://github.com/dangvy202" class="fab fa-github" aria-label="GitHub" target="_blank"></a>
+              <a href="https://www.facebook.com/profile.php?id=100006122314597" class="fab fa-facebook" aria-label="Facebook" target="_blank"></a>
+              <a  href="mailto:dangvy202@gmail.com" class="fas fa-envelope" aria-label="Mail" target="_blank"></a>
+          </div>
+      </div>
+  </div>
+
+</section>
+<!-- footer section ends -->
+
+
+<!-- scroll top btn -->
+<a href="#home" aria-label="ScrollTop" class="fas fa-angle-up" id="scroll-top"></a>
+<!-- scroll back to top -->
+
+
+<!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
+<!-- jquery cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- typed.js cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js" integrity="sha512-1KbKusm/hAtkX5FScVR5G36wodIMnVd/aP04af06iyQTkD17szAMGNmxfNH+tEuFp3Og/P5G32L1qEC47CZbUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- particle.js links -->
+<script src="./assets/js/particles.min.js"></script>
+<script src="./assets/js/app.js"></script>
+
+<!-- vanilla tilt.js links -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" integrity="sha512-SttpKhJqONuBVxbRcuH0wezjuX+BoFoli0yPsnrAADcHsQMW8rkR84ItFHGIkPvhnlRnE2FaifDOUw+EltbuHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- scroll reveal anim -->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+    ></script>
+
+<!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
+
+<script src="./assets/js/script.js"></script>
+
 </body>
 </html>
